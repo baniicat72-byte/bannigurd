@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "824790378832",
+    "firebase_url": "https://banniguard-e05a4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "banniguard-e05a4",
+    "storage_bucket": "banniguard-e05a4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824790378832:android:2d021077523bcc3833a455",
+        "android_client_info": {
+          "package_name": "com.bannigaurd.bannigaurdkids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824790378832-sbissmlp2v9lqof64ts76p971k0275qi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bannigaurd.bannigaurdkids",
+            "certificate_hash": "80b17cbefb8440f04b50a3d06246b2c3c488a3c7"
+          }
+        },
+        {
+          "client_id": "824790378832-9s07b6jb3vjhuds29f8rt0aojuaood2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS7NV00Akw1d1cIhC1vZlvKt-dUwbYVpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824790378832-9s07b6jb3vjhuds29f8rt0aojuaood2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824790378832:android:d43e3953d5e47bb133a455",
+        "android_client_info": {
+          "package_name": "com.bannigaurd.parent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824790378832-csg1b5vrne92gh9u925jb5c88h9d71rs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bannigaurd.parent",
+            "certificate_hash": "80b17cbefb8440f04b50a3d06246b2c3c488a3c7"
+          }
+        },
+        {
+          "client_id": "824790378832-9s07b6jb3vjhuds29f8rt0aojuaood2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS7NV00Akw1d1cIhC1vZlvKt-dUwbYVpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824790378832-9s07b6jb3vjhuds29f8rt0aojuaood2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

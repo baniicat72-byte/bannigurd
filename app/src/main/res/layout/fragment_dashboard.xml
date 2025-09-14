@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btnConnectDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_background"
+        android:drawablePadding="6dp"
+        android:gravity="center"
+        android:paddingStart="14dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="6dp"
+        android:text="Connect"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:drawableStartCompat="@drawable/ic_link_white"
+        app:drawableTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/tvAppName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAppName" />
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName"
+        tools:visibility="visible">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/card_background_dark"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvDeviceName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/btnSwitchDevice"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="8dp"
+                    tools:text="Kid's Vivo Phone" />
+
+                <ImageButton
+                    android:id="@+id/btnSwitchDevice"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_switch_device"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDeviceName"
+                    app:layout_constraintEnd_toStartOf="@id/ivBattery"
+                    app:layout_constraintTop_toTopOf="@id/tvDeviceName"
+                    app:tint="@color/white"
+                    tools:ignore="ContentDescription" />
+
+                <LinearLayout
+                    android:id="@+id/statusLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDeviceName">
+
+                    <ImageView
+                        android:id="@+id/ivStatusDot"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        tools:src="@drawable/status_dot_green" />
+
+                    <TextView
+                        android:id="@+id/tvStatusText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/status_green"
+                        android:textSize="14sp"
+                        tools:text="Online" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivBattery"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDeviceName"
+                    app:layout_constraintEnd_toStartOf="@id/tvBatteryStatus"
+                    app:layout_constraintTop_toTopOf="@id/tvDeviceName"
+                    tools:src="@drawable/ic_battery_full" />
+
+                <TextView
+                    android:id="@+id/tvBatteryStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDeviceName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvDeviceName"
+                    tools:text="85%" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/card_background_dark"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="120dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="12dp">
+
+                    <ImageView
+                        android:id="@+id/ivWallpaper"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@android:drawable/screen_background_dark" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <GridLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:columnCount="1">
+
+                    <TextView
+                        style="@style/InfoLabel"
+                        android:text="DEVICE NAME" />
+                    <TextView
+                        android:id="@+id/tvInfoDeviceName"
+                        style="@style/InfoValue"
+                        tools:text="VIVO 20361C" />
+
+                    <TextView
+                        style="@style/InfoLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="DEVICE MODEL" />
+                    <TextView
+                        android:id="@+id/tvInfoModel"
+                        style="@style/InfoValue"
+                        tools:text="V2031" />
+
+                    <TextView
+                        style="@style/InfoLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="MANUFACTURER" />
+                    <TextView
+                        android:id="@+id/tvInfoManufacturer"
+                        style="@style/InfoValue"
+                        tools:text="VIVO" />
+
+                    <TextView
+                        style="@style/InfoLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="ANDROID VERSION" />
+                    <TextView
+                        android:id="@+id/tvInfoAndroidVersion"
+                        style="@style/InfoValue"
+                        tools:text="13" />
+
+                    <TextView
+                        style="@style/InfoLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="BATTERY INFO" />
+                    <TextView
+                        android:id="@+id/tvInfoBattery"
+                        style="@style/InfoValue"
+                        tools:text="85%" />
+
+                </GridLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

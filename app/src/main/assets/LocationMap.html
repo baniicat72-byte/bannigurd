@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* All your previous CSS styles remain the same */
+        html, body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        #map { height: 100%; width: 100%; background-color: #2D3748; }
+        .custom-marker { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .custom-marker-dot { width: 20px; height: 20px; background-color: #4A90E2; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(74, 144, 226, 0.8); }
+        .custom-marker-pulse { width: 40px; height: 40px; background-color: rgba(74, 144, 226, 0.3); border-radius: 50%; position: absolute; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.5); opacity: 0.5; } 70% { transform: scale(1.5); opacity: 0; } 100% { transform: scale(1.5); opacity: 0; } }
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-full flex flex-col">
+
+<div id="map" class="flex-grow"></div>
+
+<!-- Controls Overlay -->
+<div class="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
+    <!-- Back button is removed as it's handled by the app's navigation -->
+    <div></div> <!-- Empty div for spacing -->
+    <div class="flex flex-col space-y-3">
+        <button id="refreshButton" class="bg-gray-800 bg-opacity-80 backdrop-blur-sm text-white rounded-full p-3 shadow-lg hover:bg-gray-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/></svg>
+        </button>
+        <button id="recenterButton" class="bg-gray-800 bg-opacity-80 backdrop-blur-sm text-white rounded-full p-3 shadow-lg hover:bg-gray-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        </button>
+    </div>
+</div>
+
+<!-- Bottom Sheet (Simplified for now) -->
+<div id="bottomSheet" class="absolute bottom-0 left-0 right-0 bg-gray-800 bg-opacity-80 backdrop-blur-sm rounded-t-2xl shadow-lg p-4 z-10">
+    <div class="w-12 h-1.5 bg-gray-600 rounded-full mx-auto mb-3"></div>
+    <div id="bottomSheetContent" class="text-center">
+        <p class="text-gray-400">Waiting for location data...</p>
+    </div>
+</div>
+
+<script>
+    let map;
+    let liveMarker;
+    let currentLat, currentLng;
+
+    // This function is called from Kotlin
+    function setApiKey(key) {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&v=beta&libraries=marker&callback=initMap`;
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 20.5937, lng: 78.9629 }, // Default to India
+            zoom: 5,
+            disableDefaultUI: true,
+            // ... (map styles)
+        });
+    }
+
+    // This function is called from Kotlin with live data
+    function updateLiveLocation(lat, lng, timestamp) {
+        currentLat = lat;
+        currentLng = lng;
+        const newPosition = { lat: lat, lng: lng };
+
+        if (!liveMarker) {
+            const markerElement = document.createElement('div');
+            markerElement.className = 'custom-marker';
+            markerElement.innerHTML = '<div class="custom-marker-pulse"></div><div class="custom-marker-dot"></div>';
+
+            liveMarker = new google.maps.marker.AdvancedMarkerView({
+                position: newPosition,
+                map: map,
+                content: markerElement,
+            });
+            map.setCenter(newPosition);
+            map.setZoom(16);
+        } else {
+            liveMarker.position = newPosition;
+        }
+
+        // Update bottom sheet
+        document.getElementById('bottomSheetContent').innerHTML = `
+            <p class="text-sm font-semibold text-white">Last Seen: ${timestamp}</p>
+            <p class="text-xs text-gray-400">${lat.toFixed(5)}, ${lng.toFixed(5)}</p>
+        `;
+    }
+
+    document.getElementById('refreshButton').addEventListener('click', () => {
+        // This calls the Kotlin function
+        if (window.Android) {
+            window.Android.requestLocationRefresh();
+        }
+    });
+
+    document.getElementById('recenterButton').addEventListener('click', () => {
+        if (map && currentLat && currentLng) {
+            map.panTo({ lat: currentLat, lng: currentLng });
+            map.setZoom(16);
+        }
+    });
+
+</script>
+</body>
+</html>

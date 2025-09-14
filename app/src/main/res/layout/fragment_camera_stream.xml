@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".CameraStreamFragment">
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/surface_view_renderer"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@id/camera_controls_panel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#80000000"
+        android:padding="8dp"
+        android:text="Connecting to Camera..."
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/camera_controls_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A61C1C1C"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_switch_camera"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_round_button_dark"
+            android:contentDescription="Switch Camera"
+            android:padding="16dp"
+            android:src="@drawable/ic_switch_camera"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btn_end_camera"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_round_button_red"
+            android:contentDescription="End Camera Stream"
+            android:padding="18dp"
+            android:src="@drawable/ic_call_end"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btn_toggle_torch"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_round_button_dark"
+            android:contentDescription="Toggle Torch"
+            android:padding="16dp"
+            android:src="@drawable/ic_torch"
+            app:tint="@color/white" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

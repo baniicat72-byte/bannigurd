@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">bannikid</string>
+    <string name="accessibility_service_description">Banniguard needs this permission for remote control features.</string>
+</resources>

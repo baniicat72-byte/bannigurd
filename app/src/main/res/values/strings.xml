@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Banniguard</string>
+    <string name="app_title_capital">B A N N I G U A R D</string>
+    <string name="welcome_subtitle">Welcome to your Peace of Mind</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="terms_and_conditions">By continuing, you agree to our <font color="#FFFFFF"><b>Terms of Service</b></font> &amp; <font color="#FFFFFF"><b>Privacy Policy</b></font></string>
+
+    <!-- Link Device Screen -->
+    <string name="link_device_title">Link a New Device</string>
+    <string name="link_device_subtitle">How would you like to connect?</string>
+    <string name="scan_qr_code_title">Scan QR Code</string>
+    <string name="scan_qr_code_desc">Point your camera at the child\'s device</string>
+    <string name="enter_code_title">Enter Pairing Code</string>
+    <string name="enter_code_desc">Enter the 6-digit code manually</string>
+
+    <string name="live_audio_icon">Live Audio Icon</string>
+    <string name="connecting">Connecting...</string>
+    <string name="record_audio">Record Audio</string>
+    <string name="stop_listening">Stop Listening</string>
+</resources>

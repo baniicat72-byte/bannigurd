@@ -1,0 +1,38 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "commands": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "command": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "timestamp": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        }
+      }
+    },
+    "appControls": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "devices": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "webrtc": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}
